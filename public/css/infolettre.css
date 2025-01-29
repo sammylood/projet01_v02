@@ -1,0 +1,50 @@
+.infolettre {
+  min-height: 300px;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-image: url("../images/hero-image.jpg");
+  box-shadow: inset 0 0 0 2000px rgb(193, 207, 215, 0.95);
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.infolettre-contenu {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.infolettre-texte h3 {
+  font-size: 2em;
+  letter-spacing: 1.5px;
+  line-height: 1.5em;
+  font-family: "DM serif display", serif;
+}
+
+.infolettre form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.infolettre input {
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #d0d0d0;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 25px;
+  border-radius: 5px 0 0 5px;
+  font-size: 1em;
+}
+.infolettre input:focus-visible {
+  outline: #4c4c4c;
+}
+.infolettre .bouton {
+  font-size: 1em;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  border: none;
+}

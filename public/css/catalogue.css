@@ -1,0 +1,79 @@
+.catalogue-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.catalogue-container main {
+  display: flex;
+  max-width: 75%;
+}
+
+.catalogue {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.catalogue h1 {
+  font-family: "DM Sans", sans-serif;
+}
+
+.catalogue article {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: calc(25% - 20px);
+  flex-direction: column;
+  margin-top: 10px;
+  max-width: calc(25% - 10px);
+  gap: 10px;
+}
+
+.catalogue-title {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.catalogue .list-grid {
+  border: 1px solid var(--couleur-gris-border);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.catalogue .list-grid > * {
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .catalogue article {
+    flex-basis: calc(33% - 20px);
+    max-width: calc(33% - 10px);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .catalogue-container {
+    flex-direction: column;
+  }
+  .catalogue-container main {
+    display: flex;
+    max-width: 100%;
+  }
+
+  .catalogue article {
+    flex-basis: calc(50% - 20px);
+    max-width: calc(50% - 10px);
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .catalogue article {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}

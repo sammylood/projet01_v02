@@ -1,0 +1,25 @@
+.hero {
+  min-height: 600px;
+  background-color: rgba(24, 32, 48, 0.8);
+  background-image: url("../images/hero-image.jpg");
+  box-shadow: inset 0 0 0 2000px rgba(24, 32, 48, 0.8);
+}
+.hero-contenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-texte h1 {
+  font-size: 3em;
+  letter-spacing: 1.5px;
+  line-height: 1.2em;
+  color: var(--couleur-blanc);
+  margin-bottom: 15px;
+}
+
+.hero-texte p {
+  font-size: 1.3em;
+  color: var(--couleur-blanc);
+  margin-bottom: 30px;
+}

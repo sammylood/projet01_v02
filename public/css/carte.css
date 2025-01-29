@@ -1,0 +1,26 @@
+.carte > * + * {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.carte {
+  border: 1px solid var(--couleur-gris-border);
+}
+.carte:hover {
+  opacity: 0.8;
+}
+
+.carte img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.carte-prix {
+  font-size: 1.2em;
+}
+
+.carte h3,
+carte p {
+  min-height: 3lh;
+}

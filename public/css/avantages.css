@@ -1,0 +1,60 @@
+.avantages {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  min-height: 300px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.avantages .catalogue {
+  margin-top: 100px;
+}
+
+.avantages article {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 30%;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.avantages-title {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.avantages-carte {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  gap: 15px;
+}
+.avantages-carte-icon {
+  display: flex;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: var(--couleur-gris-pale);
+  text-align: center;
+  align-self: center;
+}
+.avantages-carte-icon .fa {
+  font-size: 1.5em;
+}
+.avantages .carte {
+  padding: 20px;
+}
+@media screen and (max-width: 870px) {
+  .avantages article {
+    flex-basis: 100%;
+  }
+}

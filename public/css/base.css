@@ -1,0 +1,78 @@
+/* ------------------------------------------------------------ */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.5625;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h1,
+.titre {
+  font-family: "DM Serif Display", serif;
+}
+a {
+  text-decoration: none;
+  color: var(--couleur-texte);
+}
+fieldset {
+  border: none;
+}
+legend {
+  padding-top: 15px;
+  font-weight: 600;
+}
+.logo img {
+  max-width: 150px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.active {
+  background-color: var(--couleur-gris-pale);
+}
+.flex-center {
+  display: flex;
+  /* align-content: center; */
+  justify-content: center;
+}
+.background-cover {
+  background-size: cover;
+}
+.row {
+  flex-direction: row;
+}
+.column {
+  flex-direction: column;
+}
+[id="infolettre-form"] label {
+  opacity: 0;
+}
+.hidden{
+  visibility: hidden;
+}
