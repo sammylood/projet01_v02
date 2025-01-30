@@ -20,7 +20,7 @@ Route::get('/client/produit', 'ClientController@miser');
 Route::get('/client/edit', 'ClientController@edit');
 Route::post('/client/edit', 'ClientController@update');
 Route::post('/client/delete', 'ClientController@delete');
-Route::get('/client/catalogue', 'ClientController@accueil');
+Route::get('/client/catalogue', 'ClientController@catalogue');
 
 Route::get('/user/userList', 'UserController@index');
 Route::get('/user/userShow', 'UserController@show');

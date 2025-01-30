@@ -1,7 +1,7 @@
 {{ include('layouts/header.php', {title:'Clients'})}}
 <header class="entete">
     <section class="fil-ariane container">
-        <span><a href="">Vehicules </a> > <a href=""> Tous les véhicules</a></span>
+        <span><a href="">Enchères </a> > <a href=""> Toutes les enchères</a></span>
     </section>
 </header>
 
@@ -87,12 +87,43 @@
         </header> -->
         <section class="catalogue">
             <div class="catalogue-title">
-                <h2>Tous les véhicules</h2>
+                <h2>Toutes les enchères</h2>
                 <div class="list-grid">
                     <div class="button-list"><i class="fa fa-th-list"></i></div>
                     <div class="button-grid active"><i class="fa fa-th"></i></div>
                 </div>
             </div>
+            <!-- {% set displayNouveau = 0 %} -->
+            {% for enchere in encheres %}
+
+            <!-- {% if displayNouveau < 8 %} -->
+
+
+            {% for timbre in timbres %}
+            {% if timbre.encheres_id_enchere == enchere.id  %}
+            <article class="carte">
+                <a href="{{ base }}/client/produit?id={{enchere.id}}">
+                    {% for image in images %}
+                    {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
+                    <img src="{{ db_image }}{{ image.image_url }}" alt="{{ image.alt_text }}">
+                    {% endif %}
+                    {% endfor %}
+                </a>
+                <h3><a href="{{ base }}/client/produit?id={{enchere.id}}">
+   
+                        {{ timbre.nom }}
+
+                    </a></h3>
+                <span><strong>Prix de départ: </strong><span class="carte-prix">{{ enchere.prix_debut }}</span></span>
+                <span>Fin: <span>{{ enchere.date_fin }}</span></span>
+                <a class="bouton" href="{{ base }}/client/produit?id={{enchere.id}}">Voir l'enchère</a>
+            </article>
+            <!-- {% set displayNouveau = displayNouveau + 1 %} -->
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+            <!-- 
 
             <article class="carte">
                 <a href="#" class="image">
@@ -166,7 +197,7 @@
                 <h3><a href="">2024 Mirage</a></h3>
                 <span><span class="carte-prix">À partir de 16,998$</span></span>
                 <a class="bouton" href="create">Voir l'enchère</a>
-            </article>
+            </article> -->
         </section>
 
     </main>

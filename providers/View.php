@@ -10,6 +10,7 @@ class View {
         $twig = new Environment($loader);
         $twig->addGlobal('asset', ASSET);
         $twig->addGlobal('base', BASE);
+        $twig->addGlobal('db_image', DB_IMAGE);
         if(isset($_SESSION['finger_print']) and $_SESSION['finger_print']===md5($_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'])){
             $guest = false;
         }else{

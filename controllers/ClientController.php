@@ -30,8 +30,6 @@ class ClientController {
 
     public function home()
     {
-        // $client = new Clients;
-        // $clients = $client->select('nom');
 
         $enchere = new Encheres;
         $encheres = $enchere->select('date_debut');
@@ -39,16 +37,33 @@ class ClientController {
         $timbre = new Timbres;
         $timbres = $timbre->select('nom');
 
-        // $image = new Images;
-        // $images = $image->select('image_url');
+        $image = new Images;
+        $images = $image->select('image_url');
 
         if ($encheres) {
-            return View::render('client/home', ['encheres' => $encheres, 'timbres' => $timbres]);
+            return View::render('client/home', ['encheres' => $encheres, 'timbres' => $timbres, 'images' => $images]);
         } else {
             echo "error";
         }
     }
 
+    public function catalogue()
+    {
+        $enchere = new Encheres;
+        $encheres = $enchere->select('date_debut');
+
+        $timbre = new Timbres;
+        $timbres = $timbre->select('nom');
+
+        $image = new Images;
+        $images = $image->select('image_url');
+
+        if ($encheres) {
+            return View::render('client/catalogue', ['encheres' => $encheres, 'timbres' => $timbres, 'images' => $images]);
+        } else {
+            echo "error";
+        }
+    }
 
 
     public function index(){
@@ -80,16 +95,21 @@ class ClientController {
         if (isset($data['id']) && $data['id'] != null) {
             // print_r($data);
             // die();
-           
+
+            $enchereList = new Encheres;
+            $encheresList = $enchereList->select('date_debut');
+
             $encheres = new Encheres;
             $selectId = $encheres->selectId($data['id']);
 
             $timbre = new Timbres;
             $timbres = $timbre->select('nom');
 
+            $image = new Images;
+            $images = $image->select('image_url');
 
             if ($selectId) {
-                return View::render('client/produit', ['encheres' => $selectId, 'timbres' => $timbres]);
+                return View::render('client/produit', ['encheresList' => $encheresList, 'encheres' => $selectId, 'timbres' => $timbres, 'images' => $images]);
             } else {
                 return View::render('error', ['msg' => 'Could not find this client']);
             }

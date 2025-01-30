@@ -13,17 +13,36 @@
     <section class="produit-header">
         <div class="produit-photo">
             <div class="">
-                <img src="{{asset}}images/timbre-01.jpg" alt="Photo 01">
+                <img src='{% for timbre in timbres %}
+                    {% if timbre.encheres_id_enchere == encheres.id %}
+                    {% for image in images %}
+                    {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
+                    {{ db_image }}{{ image.image_url }}
+                    ' alt="{{ image.alt_text }}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}">
             </div>
+
+            {% for timbre in timbres %}
+            {% if timbre.encheres_id_enchere == encheres.id %}
+            {% for image in images %}
+            {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 0)) %}
             <div class="">
-                <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="Photo 01">
+                <img src="{{ db_image }}{{ image.image_url }}" alt="{{ image.alt_text }}">
             </div>
-            <div class="">
-                <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="Photo 02">
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+
+            <!-- <div class="">
+                <img src="/projet01_v02/public/images/timbre-01.jpg" alt="Photo 02">
             </div>
             <div class="">
                 <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="Photo 0">
-            </div>
+            </div> -->
         </div>
         <div class="produit-achat">
             <h1><a href="">{{ encheres.id }}
@@ -93,6 +112,17 @@
                     <strong>Date de fin de l'enchère : </strong>
                     {{ encheres.date_fin }}
                 </p>
+                <!-- <p>
+                    {% for timbre in timbres %}
+                    {% if timbre.encheres_id_enchere == encheres.id %}
+                    {% for image in images %}
+                    {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
+                    {{db_image}}{{image.image_url|trim}}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </p> -->
             </div>
             <form method="POST"><!-- action vide: travailler avec le même nom de colonne -->
                 <h2>Nouvelle mise</h2>
@@ -138,6 +168,40 @@
             <h2>Vous aimerez peut-être aussi...</h2>
         </div>
 
+
+        {% set displayNouveau = 0 %}
+        {% for enchereList in encheresList %}
+
+        {% if displayNouveau < 4  %}
+
+
+        {% for timbre in timbres %}
+        {% if timbre.encheres_id_enchere == enchereList.id and enchereList.id != encheres.id %}
+        <article class="carte">
+            <a href="{{ base }}/client/produit?id={{enchere.id}}">
+                {% for image in images %}
+                {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
+                <img src="{{ db_image }}{{ image.image_url }}" alt="{{ image.alt_text }}">
+                {% endif %}
+                {% endfor %}
+            </a>
+            <h3><a href="{{ base }}/client/produit?id={{enchereList.id}}">
+                    <!-- {{ display }} -->
+                    {{ timbre.nom }}
+
+
+                </a></h3>
+            <span><strong>Prix de départ: </strong><span class="carte-prix">{{ enchereList.prix_debut }}</span></span>
+            <span>Fin: <span>{{ enchereList.date_fin }}</span></span>
+            <a class="bouton" href="{{ base }}/client/produit?id={{enchereList.id}}">Voir l'enchère</a>
+        </article>
+        {% set displayNouveau = displayNouveau + 1 %}
+        {% endif %}
+        {% endfor %}
+
+        {% endif %}
+        {% endfor %}
+        <!-- 
         <article class="carte">
             <a href="#" class="image">
                 <img src="https://www.mitsubishi-motors.ca/content/dam/mitsubishi-motors-ca/images/cars/outlander-phev/2025/primary/hero/2024_Menu_Outlander_PHEV.png?width=480&quality=70&auto=webp" alt="Outlander PHEV">
@@ -173,7 +237,7 @@
             <h3><a href="">2025 Mirage</a></h3>
             <span><span class="carte-prix">À partir de 16,998$</span></span>
             <a class="bouton" href="create">Voir l'enchère</a>
-        </article>
+        </article> -->
     </section>
 
 

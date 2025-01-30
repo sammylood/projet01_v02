@@ -17,6 +17,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .produit .produit-photo div:first-of-type {
