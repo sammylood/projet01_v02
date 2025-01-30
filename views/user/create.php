@@ -1,37 +1,38 @@
-{{ include('layouts/header.php', {title:'User Create'})}}
+{{ include('layouts/header.php', {title:'Créer un compte'})}}
 <div class="container">
+    <div class="login">
         <form method="post">
-            <h2>New User</h2>
-            <label>Name
+            <h2>Nouveau compte</h2>
+            <label>Nom
                 <input type="text" name="name" value="{{ inputs.name }}">
             </label>
-             {% if errors.name is defined %}                   
-             <span class="error">{{ errors.name }}</span>
+            {% if errors.name is defined %}
+            <span class="error">{{ errors.name }}</span>
             {% endif %}
-             <label>Username
+            <label>Courriel
                 <input type="email" name="username" value="{{ inputs.username }}">
             </label>
-            {% if errors.username is defined %}                   
-             <span class="error">{{ errors.username }}</span>
+            {% if errors.username is defined %}
+            <span class="error">{{ errors.username }}</span>
             {% endif %}
-            <label>Password
+            <label>Mot de passe
                 <input type="password" name="password">
             </label>
-            {% if errors.password is defined %}                   
-             <span class="error">{{ errors.password }}</span>
-             {% endif %}
-            <label>Privilege
+            {% if errors.password is defined %}
+            <span class="error">{{ errors.password }}</span>
+            {% endif %}
+            <label class="hidden">Privilege
                 <select name="privilege_id">
                     <option value="">Select</option>
-                    {% for privilege in privileges %}
-                        <option value="{{privilege.id}}" {% if(privilege.id == inputs.privilege_id) %} selected {%endif%}>{{ privilege.privilege}}</option>
-                    {% endfor %}privilege_id
+                    <option value="1"  selected ></option>
                 </select>
             </label>
-            {% if errors.privilege_id is defined %}                   
-             <span class="error">{{ errors.privilege_id }}</span>
+            {% if errors.privilege_id is defined %}
+            <span class="error">{{ errors.privilege_id }}</span>
             {% endif %}
-            <input type="submit" class="btn" value="Save">
+            <input type="submit" class="bouton" value="Créer un compte">
         </form>
     </div>
-{{ include('layouts/footer.php')}}
+    </div>
+    {{ include('layouts/footer.php')}}
+

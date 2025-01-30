@@ -57,13 +57,13 @@ class UserController {
      */
     public function create()
     {
-        $privilege = new Privilege;
-        $privileges = $privilege->select('privilege');
+        $user = new User;
+        $users = $user->select('name');
         
         // print_r($privileges);
         // die();
 
-        return View::render('user/create', ['privileges' => $privileges]);
+        return View::render('user/create', ['users' => $users]);
     }
 
     public function store($data){
@@ -71,7 +71,7 @@ class UserController {
         $validator->field('name', $data['name'])->min(2)->max(50);
         $validator->field('username', $data['username'])->min(2)->max(50)->unique('User');
         $validator->field('password', $data['password'])->min(6)->max(20);
-       $validator->field('privilege_id', $data['privilege_id'], "Privilege")->required()->number();
+    //    $validator->field('privilege_id', $data['privilege_id'], "Privilege")->required()->number();
 
         if($validator->isSuccess()){
             $user = new User;
