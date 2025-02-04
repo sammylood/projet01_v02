@@ -2,7 +2,7 @@
 
 <header class="entete">
     <section class="fil-ariane container">
-        <span><a href="">Voiture</a> > <a href=""> 2025 Outlander PHEW</a></span>
+        <span><a href="">Bonjour</a> > <a href=""> {{ session.user_name }}</a></span>
     </section>
 </header>
 
@@ -26,61 +26,49 @@
             </div>
         </div> -->
         <div class="produit-achat">
-            <h1><a href="">{{ encheres.id }} France #2TCi - HRH Prince Albert (1857)</a></h1>
+            <h1>Création de timbre</h1>
 
-            <form method="POST"><!-- action vide: travailler avec le même nom de colonne -->
-                <h2>Nouvelle commande</h2>
-
-                <label for="voitures">Voitures</label>
-                <select id="voitures" name="id_voiture" required>
-
-                    {% for modele in modeles %}
-                    <option value="{{modele.id_voiture}}">{{ modele.modele }}</option>
-                    {% endfor %}
-
-                </select>
-                <label for="succursale">Succursales</label>
-                <select id="succursale" name="id_succursale" required>
-
-
-                    {% for succursale in succursales %}
-                    <option value="{{succursale.id_succursale}}">{{ succursale.nom }}</option>
-                    {% endfor %}
-                </select>
-
-
+            <form action="upload.php" method="POST" enctype="multipart/form-data"><!-- action vide: travailler avec le même nom de colonne -->
+                <h2>Nouveau timbre</h2>
                 <label>Nom
-                    <input type="text" name="nom">
+                    <input type="text" name="nom" required>
                 </label>
                 <label>Annee
-                    <input type="number" name="annee">
+                    <input type="number" name="annee" required>
                 </label>
                 <label>Couleur
-                    <input type="text" name="couleur">
+                    <input type="text" name="couleur" required>
                 </label>
                 <label>Tirage
-                    <input type="text" name="tirage">
+                    <input type="text" name="tirage" required>
                 </label>
                 <label>Dimensions
-                    <input type="text" name="dimensions">
+                    <input type="text" name="dimensions" required>
                 </label>
                 <label>Certification</label>
-                <input type="radio" id="nonCertifie" name="certifie" value="0">
-                <label for="nonCertifie">Non certifié</label><br>
-                <input type="radio" id="certifie" name="certifie" value="1">
+                <label for="nonCertifie">Non certifié</label>
+                <input type="radio" id="nonCertifie" name="certifie" value="0" required>
+                <br>
                 <label for="certifie">Certifié</label>
-               
+                <input type="radio" id="certifie" name="certifie" value="1" required>
+                <br>
+
                 <label for="conditions">Conditions</label>
-                <select id="conditions" name="id_condition" required>
+                <select id="conditions" name="conditions_id_condition" required>
                     {% for condition in conditions %}
                     <option value="{{ condition.id_condition }}">{{ condition.niveau }}</option>
                     {% endfor %}
                 </select>
 
-                <label>id_enchere
-                    <input type="number" name="encheres_id_enchere" value="{{ timbres|last.enchere_id_enchere }}">{{ timbres|last.enchere_id_enchere }}
-                </label>
+                <label for="countries">Pays</label>
+                <select id="countries" name="pays_id_pays" required>
+                    {% for country in countries %}
+                    <option value="{{ country|sort.id_country }}">{{ country.country_name }}</option>
+                    {% endfor %}
+                </select>
 
+                Select image to upload:
+                <input type="file" name="image_url" id="image_url">
 
                 <input type="submit" class="bouton" value="Créer le timbre">
             </form>

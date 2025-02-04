@@ -99,20 +99,8 @@ class ClientController
 
     public function compte()
     {
-        // Auth::session();
-        $client = new Clients;
-        $clients = $client->select('nom');
-
-        $achat = new Achats;
-        $achats = $achat->select('date_achat');
-
-
-        $succursale = new Succursales;
-        $succursales = $succursale->select('nom');
-
-        $voiture = new Voitures;
-        $voitures = $voiture->select('modele');
-
+        Auth::session();
+  
         $enchere = new Encheres;
         $encheres = $enchere->select('date_debut');
 
@@ -131,12 +119,27 @@ class ClientController
         $condition = new Conditions;
         $conditions = $condition->select('niveau');
 
-        if ($clients) {
+        $client = new Clients;
+        $clients = $client->select('nom');
+
+        $achat = new Achats;
+        $achats = $achat->select('date_achat');
+
+        $succursale = new Succursales;
+        $succursales = $succursale->select('nom');
+
+        $voiture = new Voitures;
+        $voitures = $voiture->select('modele');
+
+        if ($timbres) {
             return View::render('client/compte', ['clients' => $clients, 'modeles' => $voitures, 'succursales' => $succursales, 'achats' => $achats, 'encheres' => $encheres, 'timbres' => $timbres, 'images' => $images, 'mises' => $mises, 'countries' => $countries, 'conditions' => $conditions]);
         } else {
             echo "error";
         }
     }
+
+    
+
     public function miser($data = [])
     {
         Auth::session();
@@ -240,39 +243,56 @@ class ClientController
 
     public function create()
     {
-        // $client = new Clients;
-        // $clients = $client->select('nom');
+        Auth::session();
 
-        $timbre = new timbres;
+        $enchere = new Encheres;
+        $encheres = $enchere->select('date_debut');
+
+        $timbre = new Timbres;
         $timbres = $timbre->select('nom');
 
-        // $voiture = new Voitures;
-        // $voitures = $voiture->select('modele');
+        $image = new Images;
+        $images = $image->select('image_url');
 
-        // $succursale = new Succursales;
-        // $succursales = $succursale->select('nom');
+        $mise = new Mises;
+        $mises = $mise->select('montant_mise');
 
-        return View::render('client/create', ['timbres' => $timbres]);
+        $country = new Countries;
+        $countries = $country->select('country_name');
+
+        $condition = new Conditions;
+        $conditions = $condition->select('niveau');
+
+        $client = new Clients;
+        $clients = $client->select('nom');
+
+        $voiture = new Voitures;
+        $voitures = $voiture->select('modele');
+
+        $succursale = new Succursales;
+        $succursales = $succursale->select('nom');
+
+        return View::render('client/create', ['clients' => $clients, 'modeles' => $voitures, 'succursales' => $succursales, 'encheres' => $encheres, 'timbres' => $timbres, 'images' => $images, 'mises' => $mises, 'countries' => $countries, 'conditions' => $conditions]);
     }
 
     public function store($data)
     {
         // print_r($data);
         $validator = new Validator;
-        $validator->field('nom', $data['nom'])->min(2)->max(10);
-        $validator->field('adresse', $data['adresse'])->required();
-        $validator->field('tel', $data['tel'])->required();
-        $validator->field('zip_code', $data['zip_code'], 'Zip Code')->required();
-        $validator->field('courriel', $data['courriel'])->email()->required();
-        $validator->field('id_voiture', $data['voiture_id'], 'Voiture')->required();
-        $validator->field('id_succursale', $data['id_succursale'], 'Succursale')->required();
+        // $validator->field('nom', $data['nom'])->min(2)->max(10);
+        // $validator->field('adresse', $data['adresse'])->required();
+        // $validator->field('tel', $data['tel'])->required();
+        // $validator->field('zip_code', $data['zip_code'], 'Zip Code')->required();
+        // $validator->field('courriel', $data['courriel'])->email()->required();
+        // $validator->field('id_voiture', $data['voiture_id'], 'Voiture')->required();
+        // $validator->field('id_succursale', $data['id_succursale'], 'Succursale')->required();
 
         if ($validator->isSuccess()) {
-            $achat = new Achats;
-            $insert = $achat->insert($data);
+            $timbre = new Timbres;
+            $insert = $timbre->insert($data);
 
             if ($insert) {
-                return View::redirect('achat');
+                return View::redirect('client/compte');
             } else {
                 return View::render('error');
             }
@@ -290,7 +310,26 @@ class ClientController
             $succursales = $succursale->select('nom');
 
 
-            return View::render('client/create', ['errors' => $errors, 'inputs' => $data, 'clients' => $clients, 'modeles' => $voitures, 'succursales' => $succursales]);
+            $enchere = new Encheres;
+            $encheres = $enchere->select('date_debut');
+
+            $timbre = new Timbres;
+            $timbres = $timbre->select('nom');
+
+            $image = new Images;
+            $images = $image->select('image_url');
+
+            $mise = new Mises;
+            $mises = $mise->select('montant_mise');
+
+            $country = new Countries;
+            $countries = $country->select('country_name');
+
+            $condition = new Conditions;
+            $conditions = $condition->select('niveau');
+
+
+            return View::render('client/create', ['errors' => $errors, 'inputs' => $data, 'clients' => $clients, 'modeles' => $voitures, 'succursales' => $succursales, 'encheres' => $encheres, 'timbres' => $timbres, 'images' => $images, 'mises' => $mises, 'countries' => $countries, 'conditions' => $conditions]);
         }
     }
 

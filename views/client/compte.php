@@ -7,11 +7,11 @@
 
 <div class="catalogue-container container">
     <aside class="menu-filtres">
-    <div class="aside-form">
-        <div class="onglet">Mes enchères</div>
-        <div class="onglet">Mes mises</div>
-    </div>
-   
+        <div class="aside-form">
+            <div class="onglet">Mes enchères</div>
+            <div class="onglet">Mes mises</div>
+        </div>
+
         <!-- <form id="aside-form" action="#">
             <div class="as-filtres-titres"><span>filtres</span> <i class="fa fa-chevron-down"></i></div>
             <fieldset class="as-filtres">
@@ -38,45 +38,41 @@
         </form> -->
     </aside>
     <main>
-        <h1>Réservations</h1>
+        <h1>Mes Timbres</h1>
         <table>
             <thead>
                 <tr>
-                    <th>N° de Réservation</th>
-                    <th>Date</th>
-                    <th>Id voiture</th>
-                    <th>Id succursale</th>
-                    <th>Id client</th>
+                    <th>N° de timbre</th>
+                    <th>Nom du timbre</th>
+                    <th>Annee</th>
+                    <th>condition</th>
+                    <th>Pays</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                {% for achat in achats %}
+                {% for timbre in timbres %}
                 <tr>
-                    <td><strong><a href="{{ base }}/client/show?id={{achat.id}}">{{achat.id}} Voir plus ></a></strong></td>
-                    <td>{{achat.date_achat}}</td>
-                    <td>{{ achat.id_voiture }}
-                        {% for modele in modeles %}
-                        {% if modele.id_voiture == achat.id_voiture %}
-                        {{ modele.modele }}
+                    <td><strong><a href="{{ base }}/client/show?id={{timbre.id_timbre}}">{{timbre.id_timbre}} Voir plus ></a></strong></td>
+                    <td>{{ timbre.nom }}
+                    </td>
+                    <td>{{ timbre.annee }}
+                    </td>
+                    <td>{{ timbre.conditions_id_condition }}
+                        {% for condition in conditions %}
+                        {% if condition.id_condition == timbre.conditions_id_condition %}
+                        {{ condition.niveau }}
                         {% endif %}
                         {% endfor %}
                     </td>
-                    <td>{{ achat.id_succursale }}
-                        {% for succursale in succursales %}
-                        {% if succursale.id_succursale == achat.id_succursale %}
-                        {{ succursale.nom }}
+                    <td>{{ timbre.id_country }}
+                        {% for country in countries %}
+                        {% if country.id_country == timbre.pays_id_pays %}
+                        {{ country.country_name }}
                         {% endif %}
                         {% endfor %}
                     </td>
-                    <td>{{ achat.id_client }}
-                        {% for client in clients %}
-                        {% if client.id == achat.id_client %}
-                        {{ client.nom }}
-                        {% endif %}
-                        {% endfor %}
-                    </td>
-                    <td><a href="{{base}}/client/edit?id={{ achat.id }}" class="btn">Edit</a></td>
+                    <td><a href="{{base}}/client/edit?id={{ timbre.id_timbre }}" class="bouton">Edit</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
