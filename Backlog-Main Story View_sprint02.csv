@@ -1,0 +1,127 @@
+﻿Story Name,story_id,Priority,Function,Sprint,Status,As a,I want to,So that,Acceptance criteria,Notes,Sprint Release Date,attributed to,Story points,Temps alloué
+S1 : Analyse de besoins,1,3,Analyse de besoins,Sprint 0,Finished,,,,,,1/15/2025,Samuel,,
+S2 : Vision du projet,2,5,Vision du projet,Sprint 0,Finished,,,,,,1/15/2025,,,
+S3 : User Story Moodboard,3,5,User Story Moodboard,Sprint 0,In Progress,,,,,,1/15/2025,,,
+S4 : Moodboard,4,3,Moodboard,Sprint 0,Finished,,,,,,1/15/2025,,,
+S5 : Charte graphique,5,5,Charte graphique,Sprint 0,Finished,,,,,,1/15/2025,,,
+S6 : Maquette catalogue de produits,6,3,Maquette catalogue de produits,Sprint 0,Finished,,,,,,1/15/2025,,,
+S7 : Maquette page produit,7,3,Maquette page produit,Sprint 0,Finished,,,,,,1/15/2025,,,
+"S25 : Maquette page accueil
+",25,3,"Maquette page accueil
+",Sprint 0,Finished,,,,,,1/15/2025,,,
+"S26 : Recherche des images
+",26,3,"Recherche des images
+",Sprint 1,Finished,,,,,,1/22/2025,,,
+S27 : Optimisation des images,27,2,Optimisation des images,Sprint 2,,,,,,,2/1/2018,,,
+"S28 : login
+",28,5,"login
+",Sprint 2,,utilisateur,connecter au site,Je puisse ajouter des produits et faire des achats sur les autres produits. Aussi voir mon  compte.,Le nom d'utilisateur et le mot de passe doit être valide et ,,2/1/2018,,,
+S38 : Création du schéma de la base de données,38,5,Création du schéma de la base de données,Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,2.0
+"S36 : Creation fonctionnalite CRUD
+",36,5,"Creation fonctionnalite CRUD
+",Sprint 1,In Progress,utilisateur,,,,,1/22/2025,,,1.0
+S30 : Intégration catalogue de produits,30,5,Intégration catalogue de produits,Sprint 1,In Progress,utilisateur,voir la liste des produits disponibles,Je puisse choisir le produit qui m'intéresse et voir plus de détails,Les produits doivent s'afficher dynamiquement en fonction de la base de données,,1/22/2025,,,
+S31 : Intégration page produit,31,5,Intégration page produit,Sprint 1,Finished,utilisateur,voir les détails d'un des produits du catalogue,Je puisse savoir toutes les informations pertinentes qui vont me permette de faire un choix et faire une mise sur le produit avant la date limite de l'enchère,"Les informations du produit doivent s'afficher en fonction de la base de données
+Lorsqu'on ajoute une mise, elle doit s'ajouter à la fin de la liste des mises dans la table mises.
+L'information de la dernière mise doit être affichée sur la page produit (pour tous les utilisateurs)",,1/22/2025,,,
+S32 : Intégration page accueil,32,5,Intégration page accueil,Sprint 1,Finished,utilisateur,Voir la page intégrée et afficher des extraits de liste de produits filtrés,"Je puisse voir la page d'accueil affichant des informations de base, une présentation du site et des catégories de produits","Sur la page d'accueil il doit y avoir une image hero.
+- ",,1/22/2025,,,2.0
+S33 : Création de la navigation,33,3,Création de la navigation,Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.5
+"S34 : Création fonctionnalité zoom
+",34,5,"Création fonctionnalité zoom
+",Sprint 2,,utilisateur,,,,,2/1/2018,,,
+"S35 : Creation fonctionnalite ajouter image
+",35,3,"Creation fonctionnalite ajouter image
+",Sprint 2,,utilisateur,,,,,2/1/2018,,,
+S37 : Suggestions supplémentaires de timbres au bas de la page produits,37,1,Suggestions supplémentaires de timbres au bas de la page produits,Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,
+S39 : Création du Github,39,,Création du Github,Sprint 1,Finished,,,,,,1/22/2025,,,0.3
+"S29 : BD - Création de la table Encheres et de ses entitées
+",29,5,"BD - Création de la table Encheres et de ses entitées
+",Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,
+S40 : Création de la structure de dossier,40,5,Création de la structure de dossier,Sprint 1,Finished,,,,,,1/22/2025,,,
+S41 : Création de la Class Encheres,41,5,Création de la Class Encheres,Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,
+S42 : Creation de la Class Timbres,42,5,Creation de la Class Timbres,Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,
+S43 : Creation de la Class Images,43,5,Creation de la Class Images,Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,
+S44 : Reinstallation de Composer (après avoir supprimé dossier Vendor),44,5,Reinstallation de Composer (après avoir supprimé dossier Vendor),Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,
+"S45 : BD - Création de la table Timbres et de ses entitées
+",45,5,"BD - Création de la table Timbres et de ses entitées
+",Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.5
+S46 : BD - Création de la table Images et de ses entitées,46,5,BD - Création de la table Images et de ses entitées,Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.5
+S47 : BD - Création de la table Users et de ses entitées,47,5,BD - Création de la table Users et de ses entitées,Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.5
+"S48 : BD - Création de la table Images et de ses entitées
+",48,5,"BD - Création de la table Images et de ses entitées
+",Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.5
+S49 : BD - Création de la table Couleurs et de ses entitées,49,5,BD - Création de la table Couleurs et de ses entitées,Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.5
+"S50 : BD - Création de la table Pays et de ses entitées
+",50,5,"BD - Création de la table Pays et de ses entitées
+",Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.5
+"S51 : BD - Création de la table Mises et de ses entitées
+",51,5,"BD - Création de la table Mises et de ses entitées
+",Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.5
+S52 : BD - Création de la table Privileges et de ses entitées,52,5,BD - Création de la table Privileges et de ses entitées,Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.5
+S53 : FRONT - Création de la navigation (à afficher sur toutes les pages),53,3,FRONT - Création de la navigation (à afficher sur toutes les pages),Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.3
+S54 : FRONT - Création du footer (à afficher sur toutes les pages),54,3,FRONT - Création du footer (à afficher sur toutes les pages),Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,0.3
+S55 : FRONT - Ajustement de la grille de produits (CSS)(Responsive),55,3,FRONT - Ajustement de la grille de produits (CSS)(Responsive),Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,1.5
+"S56 : login - Creation du Controller d'authentification
+",56,,"login - Creation du Controller d'authentification
+",Sprint 2,,,,,,,2/1/2018,,,
+S57 : login - Creation du provider d'authentification,57,,login - Creation du provider d'authentification,Sprint 2,,,,,,,2/1/2018,,,
+"S58 : login - Creation du provider ""Validator""",58,,"login - Creation du provider ""Validator""",Sprint 2,,,,,,,2/1/2018,,,
+"S59 : BD - Corriger le diagram
+",59,3,"BD - Corriger le diagram
+",Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,3.0
+"S60 : FRONT - Ajouter la section aside sur page produit
+",60,3,"FRONT - Ajouter la section aside sur page produit
+",Sprint 1,Finished,utilisateur,,,,,1/22/2025,,,
+S61 : FRONT - Faire fonctionner les filtres sur la page produits,61,,FRONT - Faire fonctionner les filtres sur la page produits,Sprint 2,,,,,,,2/1/2018,,,
+S62 : FRONT - Faire animation sur boutons,62,,FRONT - Faire animation sur boutons,Sprint 2,,,,,,,2/1/2018,,,
+"S63 : BD - Ajouter le champ Alt pour chaque image
+",63,,"BD - Ajouter le champ Alt pour chaque image
+",Sprint 2,Finished,utilisateur,,,,,2/1/2018,,,
+"S64 : BACK -  Ajouter le URL de base des images dans le fichier config
+",64,,"BACK -  Ajouter le URL de base des images dans le fichier config
+",Sprint 2,Finished,,,,,,2/1/2018,,,0.3
+S65 : BACK - Ajouter le BD_image dans le twig pour avoir un raccourci des liens images ( à modifier dans la version en ligne ) ,65,,BACK - Ajouter le BD_image dans le twig pour avoir un raccourci des liens images ( à modifier dans la version en ligne ) ,Sprint 2,Finished,,,,,,2/1/2018,,,0.5
+S66 : BACK - Rendre les images de la page d'acceuil dynamique ( ajouter le Twig des images ),66,,BACK - Rendre les images de la page d'acceuil dynamique ( ajouter le Twig des images ),Sprint 2,Finished,,,,,,2/1/2018,,,3.0
+S67 : BACK - Ajouter methode twig pour ordonner les enchères du plus récent,67,,BACK - Ajouter methode twig pour ordonner les enchères du plus récent,Sprint 2,Finished,,,,,,2/1/2018,,,0.5
+S68 : BACK - Limiter liste de produit à  seulement 4 éléments ,68,,BACK - Limiter liste de produit à  seulement 4 éléments ,Sprint 2,Finished,,,,,,2/1/2018,,,0.8
+"S69 : BACK - Créer la classe qui mène vers la page index des mises quand l'utilisateur se connecte
+",69,,"BACK - Créer la classe qui mène vers la page index des mises quand l'utilisateur se connecte
+",Sprint 2,,,,,,,2/1/2018,,,
+"S70 : BD - Créer 8 produits avec images pour tester affichage sur accueil et catalogue
+",70,,"BD - Créer 8 produits avec images pour tester affichage sur accueil et catalogue
+",Sprint 1,Finished,,,,,,1/22/2025,,,0.5
+"S71 : FRONT - Corriger CSS Form ( infolettre page d'accueil, filtres produits, page produit)
+",71,,"FRONT - Corriger CSS Form ( infolettre page d'accueil, filtres produits, page produit)
+",Sprint 2,Not Started,,,,,,2/1/2018,,,
+"S72 : BD - ajouter la table liste_infolettre à la BD
+",72,,"BD - ajouter la table liste_infolettre à la BD
+",Sprint 2,Not Started,,,,,,2/1/2018,,,
+S73 : BACK -  Créer Classe pour ajouter inscription à la table liste_infolettre,73,,BACK -  Créer Classe pour ajouter inscription à la table liste_infolettre,Sprint 2,Not Started,,,,,,2/1/2018,,,
+"S74 : BACK - Section suggestion autres produits - filtrer pour ne pas montrer produit en cours
+",74,,"BACK - Section suggestion autres produits - filtrer pour ne pas montrer produit en cours
+",Sprint 1,Finished,,,,,,1/22/2025,,,0.5
+S75 : BACK - Rendre dynamique la page produits,75,,BACK - Rendre dynamique la page produits,Sprint 2,Finished,,,,,,2/1/2018,,,1.0
+"S76 : BACK - Créer la page Create user
+",76,,"BACK - Créer la page Create user
+",Sprint 2,Finished,,,,,,2/1/2018,,,1.0
+"S77 : BACK - Créer la page ""ajouter enchere""
+",77,,"BACK - Créer la page ""ajouter enchere""
+",Sprint 2,Not Started,,,,,,2/1/2018,,,
+"S78 : FRONT - ajouter la possibilité de filtrer les enchères
+",78,,"FRONT - ajouter la possibilité de filtrer les enchères
+",Sprint 3,,,,,,,,,,
+"S79 : BACK - ajouter la possibilité d'ajouter une image à l'enchère
+",79,,"BACK - ajouter la possibilité d'ajouter une image à l'enchère
+",Sprint 3,,,,,,,,,,
+"S80 : BACK - ajouter la possibiliter de faire une mise
+",80,,"BACK - ajouter la possibiliter de faire une mise
+",Sprint 3,,,,,,,,,,
+S81 : BACK - ajouter toutes les mises sur le dashboard du compte utilisateur,81,,BACK - ajouter toutes les mises sur le dashboard du compte utilisateur,Sprint 3,,,,,,,,,,
+"S82 : BACK - Créer une page compte pour voir les informations du compte (Show) et les mises faites
+",82,,"BACK - Créer une page compte pour voir les informations du compte (Show) et les mises faites
+",Sprint 3,,,,,,,,,,
+"S83 : BACK - ajouter PHPMailer pour pouvoir envoyer un courriel à partir du site (notification)
+",83,,"BACK - ajouter PHPMailer pour pouvoir envoyer un courriel à partir du site (notification)
+",Sprint 3,,,,,,,,,,
+S84 : BACK - Test des fonctionnalités,84,,BACK - Test des fonctionnalités,Sprint 3,,,,,,,,,,

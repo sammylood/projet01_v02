@@ -1,21 +1,25 @@
-{{ include('layouts/header.php', {title:'Clients'})}}
+{{ include('layouts/header.php', {title:'Mon compte'})}}
 <header class="entete">
     <section class="fil-ariane container">
-        <span><a href="">Vehicules </a> > <a href=""> Tous les véhicules</a></span>
+        <span>Bonjour {{ session.user_name }}</span>
     </section>
 </header>
 
 <div class="catalogue-container container">
     <aside class="menu-filtres">
-
-        <form id="aside-form" action="#">
+    <div class="aside-form">
+        <div class="onglet">Mes enchères</div>
+        <div class="onglet">Mes mises</div>
+    </div>
+   
+        <!-- <form id="aside-form" action="#">
             <div class="as-filtres-titres"><span>filtres</span> <i class="fa fa-chevron-down"></i></div>
             <fieldset class="as-filtres">
                 <legend>Provenance</legend>
-
-                <label for="antartique">
-                    <input type="checkbox" name="antartique" id="antartique"> <span>Antartique</span>
+                <label for="amerique">
+                    <input type="checkbox" name="amerique" id="amerique"> <span>Amérique</span>
                 </label>
+
             </fieldset>
             <fieldset class="as-filtres">
                 <legend>Valeur estimée</legend>
@@ -31,7 +35,7 @@
                     <input type="checkbox" name="noirBlanc" id="noirBlanc"> <span>Noir et blanc</span>
                 </label>
             </fieldset>
-        </form>
+        </form> -->
     </aside>
     <main>
         <h1>Réservations</h1>
@@ -80,5 +84,4 @@
         <a href="{{ base }}/client/create" class="bouton">Nouvelle commande</a>
     </main>
 </div>
-
 {{ include('layouts/footer.php')}}

@@ -11,7 +11,7 @@
             <h2>Nos timbres vedettes</h2>
         </header> -->
     <section class="produit-header">
-        <div class="produit-photo">
+        <!-- <div class="produit-photo">
             <div class="">
                 <img src="{{asset}}images/timbre-01.jpg" alt="Photo 01">
             </div>
@@ -24,7 +24,7 @@
             <div class="">
                 <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="Photo 0">
             </div>
-        </div>
+        </div> -->
         <div class="produit-achat">
             <h1><a href="">{{ encheres.id }} France #2TCi - HRH Prince Albert (1857)</a></h1>
 
@@ -52,20 +52,37 @@
                 <label>Nom
                     <input type="text" name="nom">
                 </label>
-                <label>Adresse
-                    <input type="text" name="adresse">
+                <label>Annee
+                    <input type="number" name="annee">
                 </label>
-                <label>Telephone
-                    <input type="number" name="tel">
+                <label>Couleur
+                    <input type="text" name="couleur">
                 </label>
-                <label>Code postal
-                    <input type="text" name="code_postal">
+                <label>Tirage
+                    <input type="text" name="tirage">
                 </label>
-                <label>Courriel
-                    <input type="text" name="courriel">
+                <label>Dimensions
+                    <input type="text" name="dimensions">
+                </label>
+                <label>Certification</label>
+                <input type="radio" id="nonCertifie" name="certifie" value="0">
+                <label for="nonCertifie">Non certifié</label><br>
+                <input type="radio" id="certifie" name="certifie" value="1">
+                <label for="certifie">Certifié</label>
+               
+                <label for="conditions">Conditions</label>
+                <select id="conditions" name="id_condition" required>
+                    {% for condition in conditions %}
+                    <option value="{{ condition.id_condition }}">{{ condition.niveau }}</option>
+                    {% endfor %}
+                </select>
+
+                <label>id_enchere
+                    <input type="number" name="encheres_id_enchere" value="{{ timbres|last.enchere_id_enchere }}">{{ timbres|last.enchere_id_enchere }}
                 </label>
 
-                <input type="submit" class="bouton" value="Demander un essai routier">
+
+                <input type="submit" class="bouton" value="Créer le timbre">
             </form>
         </div>
     </section>

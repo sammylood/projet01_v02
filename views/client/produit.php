@@ -125,7 +125,7 @@
                 </p> -->
             </div>
             <form method="POST"><!-- action vide: travailler avec le même nom de colonne -->
-                <h2>Nouvelle mise</h2>
+                
 
 
                 <!-- 
@@ -134,15 +134,32 @@
                 </label>
                 <label>Adresse
                     <input type="text" name="adresse">
-                </label>
-                <label>Telephone
-                    <input type="number" name="tel">
-                </label>
-                <label>Code postal
-                    <input type="text" name="code_postal">
-                </label> -->
+                </label>-->
+                <label for="users_id" class="hidden">User_id</label>
+                <select id="users_id" name="users_id" required class="hidden">
+                    <option value="{{ session.user_id }}">{{ session.user_id }}</option>
+                </select>
+                <label for="encheres_id" class="hidden">Encheres_id</label>
+                <select id="encheres_id" name="encheres_id" required class="hidden">
+                    <option value="{{ encheres.id }}">{{ encheres.id }}</option>
+                </select>
+                <!-- <label for="timbres_id">timbre_id</label>
+                <select id="timbres_id" name="{{ timbres.id_timbre }}" required>
+                    {% for timbre in timbres %}
+                    {% if timbre.encheres_id_enchere == encheres.id %}
+                    <option value="{{ timbre.id_timbre }}">{{ timbre.id_timbre }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select> -->
+                <h2>Nouvelle mise</h2>
+                {% set mise_minimum = (mises|last.montant_mise) + 5 %}
+                <p class="derniereMise">La dernière mise était de : {{ mises|last.montant_mise }}</p>
+                <!-- dernier:{{mises|last.users_id}} vous:{{session.user_id}} -->
+                {% if mises|last.users_id == session.user_id  %}
+                <p class="derniereMise"><i class="fa fa-check-circle"></i> Vous êtes la dernière personne à avoir misé</p>
+                {% endif %}
                 <label>Votre nouvelle mise
-                    <input type="number" name="miser">
+                    <input type="number" name="montant_mise" min="{{ mise_mimimum }}" value="{{ mise_minimum }}">
                 </label>
 
                 <input type="submit" class="bouton" value="Faire une mise">
@@ -159,7 +176,7 @@
         </div>
         <div class="produit-description-detail">
             <h3>Historique</h3>
-            <p>The Outlander PHEV has evolved to deliver even more power, control and capability. The uniquely balanced twin-electric motors are the key to the Super All-Wheel Control system, which delivers an all-electric performance that’s smoother, quieter and more responsive than ever before.</p>
+            <p>Considéré comme le premier timbre-poste officiel, Ce timbre a été émis au Royaume-Uni le 1er mai 1840 et mis en circulation le 6 mai. Il présente un portrait de la reine Victoria sur fond noir et avait une valeur faciale d'un penny. Ce timbre a révolutionné le système postal en introduisant l'affranchissement prépayé, rendant l'envoi de lettres plus accessible. Malgré son élégance, il a été remplacé par le Penny Red en 1841, car l’oblitération sur fond noir était difficile à voir. Aujourd’hui, il est très recherché par les collectionneurs.</p>
         </div>
 
     </section>
