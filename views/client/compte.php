@@ -13,6 +13,7 @@
         </div>
     </aside>
     <main>
+
         <h2 id="timbres">Mes Timbres</h2>
         <table class="compte">
             <thead>
@@ -54,7 +55,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{{ base }}/client/create" class="bouton">Nouvelle commande</a>
+        <a href="{{ base }}/client/create" class="bouton">Créer un nouveau produit</a>
         <br>
         <h2 id="mises">Mes Mises</h2>
         <table class="compte">

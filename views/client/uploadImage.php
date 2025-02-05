@@ -13,7 +13,7 @@
         <div class="produit-achat">
             <h1>Création de timbre</h1>
             <br>
-            <form action="upload-image" method="POST" enctype="multipart/form-data"><!-- action vide: travailler avec le même nom de colonne -->
+            <form method="POST" enctype="multipart/form-data"><!-- action vide: travailler avec le même nom de colonne -->
                 <h2>Ajouter une image</h2>
 
                 Choisissez l'image à téléverser:

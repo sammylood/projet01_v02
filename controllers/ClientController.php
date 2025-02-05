@@ -97,10 +97,12 @@ class ClientController
         }
     }
 
+    // pour la page compte.php
+
     public function compte()
     {
         Auth::session();
-  
+
         $enchere = new Encheres;
         $encheres = $enchere->select('date_debut');
 
@@ -138,8 +140,8 @@ class ClientController
         }
     }
 
-    
 
+    // Pour la page
     public function miser($data = [])
     {
         Auth::session();
@@ -185,7 +187,7 @@ class ClientController
         // $validator->field('id_succursale', $data['id_succursale'], 'Succursale')->required();
 
         if ($validator->isSuccess()) {
-           
+
 
             $mise = new Mises;
             $insert = $mise->insert($data);
@@ -277,21 +279,6 @@ class ClientController
         return View::render('client/create', ['clients' => $clients, 'modeles' => $voitures, 'succursales' => $succursales, 'encheres' => $encheres, 'timbres' => $timbres, 'images' => $images, 'mises' => $mises, 'countries' => $countries, 'conditions' => $conditions]);
     }
 
-    public function upload(){
-        
-        $image_name = $_FILES["fileToUpload"]["name"];
-    
-
-        $image = new Images;
-        $insert = $image->insert($image_name);
-
-        if ($insert) {
-            return View::redirect('client/compte');
-        } else {
-            return View::render('error');
-        }
-    }
-
     public function store($data)
     {
         // print_r($data);
@@ -305,13 +292,13 @@ class ClientController
         // $validator->field('id_succursale', $data['id_succursale'], 'Succursale')->required();
 
         if ($validator->isSuccess()) {
-           
+
 
             $timbre = new Timbres;
             $insert = $timbre->insert($data);
 
             if ($insert) {
-                return View::redirect('client/compte');
+                return View::redirect('client/uploadImage');
             } else {
                 return View::render('error');
             }
@@ -351,6 +338,190 @@ class ClientController
             return View::render('client/create', ['errors' => $errors, 'inputs' => $data, 'clients' => $clients, 'modeles' => $voitures, 'succursales' => $succursales, 'encheres' => $encheres, 'timbres' => $timbres, 'images' => $images, 'mises' => $mises, 'countries' => $countries, 'conditions' => $conditions]);
         }
     }
+
+
+
+    public function upload()
+    {
+        Auth::session();
+
+        $enchere = new Encheres;
+        $encheres = $enchere->select('date_debut');
+
+        $timbre = new Timbres;
+        $timbres = $timbre->select('nom');
+
+        $image = new Images;
+        $images = $image->select('image_url');
+
+        $mise = new Mises;
+        $mises = $mise->select('montant_mise');
+
+        $country = new Countries;
+        $countries = $country->select('country_name');
+
+        $condition = new Conditions;
+        $conditions = $condition->select('niveau');
+
+        $client = new Clients;
+        $clients = $client->select('nom');
+
+        $voiture = new Voitures;
+        $voitures = $voiture->select('modele');
+
+        $succursale = new Succursales;
+        $succursales = $succursale->select('nom');
+
+        return View::render('client/uploadImage', ['clients' => $clients, 'modeles' => $voitures, 'succursales' => $succursales, 'encheres' => $encheres, 'timbres' => $timbres, 'images' => $images, 'mises' => $mises, 'countries' => $countries, 'conditions' => $conditions]);
+    }
+
+
+
+    public function storeUpload()
+    {
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
+        $validator = new Validator;
+        // $validator->field('nom', $data['nom'])->min(2)->max(10);
+        
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            var_dump($_FILES);
+
+            
+            $image_url = ($_FILES["fileToUpload"]["name"]);
+            echo "nom d'image " . $image_url;
+            $imageTable = ['', $image_url, '1', '15'];
+// die();
+            $image = new Images;
+            $insert = $image->insert($imageTable);
+            
+            
+            echo "<br> ";
+            var_dump($imageTable);
+            die();
+            if ($insert) {
+                return View::redirect('client/compte');
+                
+            }
+
+            return View::redirect('client/upload', ['uploadedImage' => $image_url]);
+        } else {
+            return View::render('error');
+        }
+
+
+        if ($validator->isSuccess()) {
+
+
+            // $mise = new Mises;
+            // $insert = $mise->insert($data);
+
+
+
+        } else {
+            $errors = $validator->getErrors();
+            // print_r( $errors);
+
+            $enchere = new Encheres;
+            $encheres = $enchere->select('date_debut');
+
+            $timbre = new Timbres;
+            $timbres = $timbre->select('nom');
+
+            $image = new Images;
+            $images = $image->select('image_url');
+
+            $mise = new Mises;
+            $mises = $mise->select('montant_mise');
+
+            return View::render('client/compte', ['errors' => $errors,  'encheres' => $encheres, 'timbres' => $timbres, 'images' => $images, 'mises' => $mises]);
+        }
+    }
+
+
+
+
+    public function uploadConfirmation()
+    {
+        Auth::session();
+
+        $enchere = new Encheres;
+        $encheres = $enchere->select('date_debut');
+
+        $timbre = new Timbres;
+        $timbres = $timbre->select('nom');
+
+        $image = new Images;
+        $images = $image->select('image_url');
+
+        $mise = new Mises;
+        $mises = $mise->select('montant_mise');
+
+        $country = new Countries;
+        $countries = $country->select('country_name');
+
+        $condition = new Conditions;
+        $conditions = $condition->select('niveau');
+
+        $client = new Clients;
+        $clients = $client->select('nom');
+
+        $voiture = new Voitures;
+        $voitures = $voiture->select('modele');
+
+        $succursale = new Succursales;
+        $succursales = $succursale->select('nom');
+
+        return View::render('client/upload', ['clients' => $clients, 'modeles' => $voitures, 'succursales' => $succursales, 'encheres' => $encheres, 'timbres' => $timbres, 'images' => $images, 'mises' => $mises, 'countries' => $countries, 'conditions' => $conditions]);
+    }
+
+
+
+    public function storeUploadConfirmation()
+    {
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
+        $validator = new Validator;
+        // $validator->field('nom', $data['nom'])->min(2)->max(10);
+
+        if ($validator->isSuccess()) {
+
+
+
+            var_dump($_FILES);
+
+            die();
+
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                return View::redirect('client/compte');
+            } else {
+                return View::render('error');
+            }
+        } else {
+            $errors = $validator->getErrors();
+            // print_r( $errors);
+
+            $enchere = new Encheres;
+            $encheres = $enchere->select('date_debut');
+
+            $timbre = new Timbres;
+            $timbres = $timbre->select('nom');
+
+            $image = new Images;
+            $images = $image->select('image_url');
+
+            $mise = new Mises;
+            $mises = $mise->select('montant_mise');
+
+            return View::render('client/compte', ['errors' => $errors, 'inputs' => $data, 'encheres' => $encheres, 'timbres' => $timbres, 'images' => $images, 'mises' => $mises]);
+        }
+    }
+
+
+
+
 
 
     public function edit($data = [])

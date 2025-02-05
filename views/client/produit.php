@@ -125,7 +125,7 @@
                 </p> -->
             </div>
             <form method="POST"><!-- action vide: travailler avec le même nom de colonne -->
-                
+
 
 
                 <!-- 
@@ -153,9 +153,12 @@
                 </select> -->
                 <h2>Nouvelle mise</h2>
                 {% set mise_minimum = (mises|last.montant_mise) + 5 %}
-                <p class="derniereMise">La dernière mise était de : {{ mises|last.montant_mise }}</p>
+                <p class="derniereMise">La dernière mise était de :
+                    
+                    {{ mises|last.montant_mise }}
+                </p>
                 <!-- dernier:{{mises|last.users_id}} vous:{{session.user_id}} -->
-                {% if mises|last.users_id == session.user_id  %}
+                {% if mise.user_id == session.user_id and mises|last.users_id == session.user_id  %}
                 <p class="derniereMise"><i class="fa fa-check-circle"></i> Vous êtes la dernière personne à avoir misé</p>
                 {% endif %}
                 <label>Votre nouvelle mise
