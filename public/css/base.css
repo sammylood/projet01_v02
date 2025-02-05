@@ -75,4 +75,19 @@ legend {
 }
 .hidden{
   visibility: hidden;
+  height:0;
+}
+.width-100 {
+  width: 100%;
+}
+.sticky {
+  position:sticky;
+  top: 200px;
+}
+.compte th, .compte td {
+  text-align: left;
+  padding: 0 10px;
+}
+.compte thead {
+  background-color: var(--couleur-gris-primaire);
 }

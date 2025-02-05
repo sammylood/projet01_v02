@@ -185,6 +185,8 @@ class ClientController
         // $validator->field('id_succursale', $data['id_succursale'], 'Succursale')->required();
 
         if ($validator->isSuccess()) {
+           
+
             $mise = new Mises;
             $insert = $mise->insert($data);
 
@@ -275,6 +277,21 @@ class ClientController
         return View::render('client/create', ['clients' => $clients, 'modeles' => $voitures, 'succursales' => $succursales, 'encheres' => $encheres, 'timbres' => $timbres, 'images' => $images, 'mises' => $mises, 'countries' => $countries, 'conditions' => $conditions]);
     }
 
+    public function upload(){
+        
+        $image_name = $_FILES["fileToUpload"]["name"];
+    
+
+        $image = new Images;
+        $insert = $image->insert($image_name);
+
+        if ($insert) {
+            return View::redirect('client/compte');
+        } else {
+            return View::render('error');
+        }
+    }
+
     public function store($data)
     {
         // print_r($data);
@@ -288,6 +305,8 @@ class ClientController
         // $validator->field('id_succursale', $data['id_succursale'], 'Succursale')->required();
 
         if ($validator->isSuccess()) {
+           
+
             $timbre = new Timbres;
             $insert = $timbre->insert($data);
 

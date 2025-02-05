@@ -33,7 +33,7 @@
             </div>
             <div class="search-user">
                 <a href="{{ base }}/clients" class="search"><i class="fa fa-search"></i></a>
-                <a href="{{ base }}/clients" class="user"><i class="fa fa-user"></i></a>
+                <a href="{{ base }}/client/compte" class="user"><i class="fa fa-user"></i></a>
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>

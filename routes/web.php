@@ -15,6 +15,7 @@ Route::get('/client/index', 'ClientController@index');
 Route::get('/client/show', 'ClientController@show');
 Route::get('/client/create', 'ClientController@create');
 Route::post('/client/create', 'ClientController@store');
+Route::post('/client/upload-image', 'ClientController@upload');
 Route::get('/client/produit', 'ClientController@miser');
 Route::post('/client/produit', 'ClientController@storeMiser');
 Route::get('/client/compte', 'ClientController@compte');

@@ -6,40 +6,15 @@
 </header>
 
 <div class="catalogue-container container">
-    <aside class="menu-filtres">
-        <div class="aside-form">
-            <div class="onglet">Mes enchères</div>
-            <div class="onglet">Mes mises</div>
+    <aside class="menu-filtres ">
+        <div class="aside-form sticky">
+            <div class="onglet"><a href="#timbres">Mes timbres</a></div>
+            <div class="onglet"><a href="#mises">Mes mises</a></div>
         </div>
-
-        <!-- <form id="aside-form" action="#">
-            <div class="as-filtres-titres"><span>filtres</span> <i class="fa fa-chevron-down"></i></div>
-            <fieldset class="as-filtres">
-                <legend>Provenance</legend>
-                <label for="amerique">
-                    <input type="checkbox" name="amerique" id="amerique"> <span>Amérique</span>
-                </label>
-
-            </fieldset>
-            <fieldset class="as-filtres">
-                <legend>Valeur estimée</legend>
-
-                <label for="prix-1000Plus">
-                    <input type="checkbox" name="prix-1000Plus" id="prix-1000Plus"> <span>1000.01$ et plus</span>
-                </label>
-            </fieldset>
-            <fieldset class="as-filtres">
-                <legend>Couleurs populaires</legend>
-
-                <label for="noirBlanc">
-                    <input type="checkbox" name="noirBlanc" id="noirBlanc"> <span>Noir et blanc</span>
-                </label>
-            </fieldset>
-        </form> -->
     </aside>
     <main>
-        <h1>Mes Timbres</h1>
-        <table>
+        <h2 id="timbres">Mes Timbres</h2>
+        <table class="compte">
             <thead>
                 <tr>
                     <th>N° de timbre</th>
@@ -47,13 +22,14 @@
                     <th>Annee</th>
                     <th>condition</th>
                     <th>Pays</th>
-                    <th></th>
+
                 </tr>
             </thead>
             <tbody>
-                {% for timbre in timbres %}
+                {% for timbre in timbres|sort((a, b) => a.id_timbre <=> b.id_timbre) %}
+                {% if timbre.users_id_user == session.user_id %}
                 <tr>
-                    <td><strong><a href="{{ base }}/client/show?id={{timbre.id_timbre}}">{{timbre.id_timbre}} Voir plus ></a></strong></td>
+                    <td><strong><a href="{{ base }}/client/show?id={{timbre.id_timbre}}">{{timbre.id_timbre}} </a></strong></td>
                     <td>{{ timbre.nom }}
                     </td>
                     <td>{{ timbre.annee }}
@@ -72,12 +48,40 @@
                         {% endif %}
                         {% endfor %}
                     </td>
-                    <td><a href="{{base}}/client/edit?id={{ timbre.id_timbre }}" class="bouton">Edit</a></td>
+
                 </tr>
+                {% endif %}
                 {% endfor %}
             </tbody>
         </table>
         <a href="{{ base }}/client/create" class="bouton">Nouvelle commande</a>
+        <br>
+        <h2 id="mises">Mes Mises</h2>
+        <table class="compte">
+            <thead>
+                <tr>
+                    <th>N° de Mise</th>
+                    <th>N° de l'enchère</th>
+                    <th>Montant de la mise</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for mise in mises %}
+                {% if mise.users_id == session.user_id %}
+                <tr>
+                    <td><strong>{{ mise.id_mise }}</strong></td>
+                    <td>{{ mise.encheres_id }}
+                    </td>
+                    <td>{{ mise.montant_mise }}
+                    </td>
+
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
     </main>
 </div>
 {{ include('layouts/footer.php')}}
