@@ -1,7 +1,7 @@
-{{ include('layouts/header.php', {title:'Enchères en cours'})}}
+{{ include('layouts/header.php', {title:'Enchères passées'})}}
 <header class="entete">
     <section class="fil-ariane container">
-        <span><a href="">Enchères </a> > <a href=""> Toutes les enchères en cours</a></span>
+        <span><a href="">Enchères </a> > <a href=""> Toutes les enchères passées</a></span>
     </section>
 </header>
 
@@ -87,20 +87,21 @@
         </header> -->
         <section class="catalogue">
             <div class="catalogue-title">
-                <h2>Toutes les enchères en cours</h2>
+                <h2>Toutes les enchères passées</h2>
                 <div class="list-grid">
                     <div class="button-list"><i class="fa fa-th-list"></i></div>
                     <div class="button-grid active"><i class="fa fa-th"></i></div>
                 </div>
             </div>
-
             {% set displayNouveau = 0 %}
 
-
+            <!-- Affiche la liste d'enchere -->
             {% for enchere in encheres %}
 
-            {% if displayNouveau < 12 %}
 
+
+            <!-- incrémente le nombre de fois qu'on affiche un timbre à l'écran -->
+            {% if displayNouveau < 12 %}
 
             {% for timbre in timbres %}
 
@@ -108,13 +109,11 @@
             {% set maintenant = 'now'|date("YmdHis") %}
             {% set difference = dateFin - maintenant %}
 
-            {% if timbre.encheres_id_enchere == enchere.id and difference > 0 %}
-
-
-
+            {% if timbre.encheres_id_enchere == enchere.id and difference < -1 %}
             <article class="carte">
                 <a href="{{ base }}/client/produit?id={{enchere.id}}">
                     {% for image in images %}
+                    <!-- Trouve l'image associée à chaque timbre et affiche seulement si le produit à une image principale -->
                     {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
                     <img src="{{ db_image }}{{ image.image_url }}">
                     {% endif %}
@@ -129,6 +128,7 @@
                 <span>Fin: <span>{{ enchere.date_fin }}</span></span>
                 <a class="bouton" href="{{ base }}/client/produit?id={{enchere.id}}">Voir l'enchère</a>
             </article>
+            <!-- incrémentation du nombre de timbre à chaque tour de boucle -->
             {% set displayNouveau = displayNouveau + 1 %}
             {% endif %}
             {% endfor %}

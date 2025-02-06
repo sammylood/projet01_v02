@@ -68,40 +68,11 @@
         {% endfor %}
         {% endif %}
         {% endfor %}
-        <!-- 
-        <article class="carte">
-            <a href="pages/produit.html">
-                <img src="{{ asset }}images/timbre-01.jpg" alt="Timbre 02"> </a>
-            <h3><a href="pages/produit.html">Timbre de Grande-Bretagne #64 - Reine Victoria (1873) </a></h3>
-            <span><strong>Prix de départ: </strong><span class="carte-prix">49.50$</span></span>
-            <span>Fin: <span>2024-12-24</span></span>
-            <a class="bouton" href="pages/produit.html">Voir l'enchère</a>
-        </article>
-
-        <article class="carte">
-            <a href="pages/produit.html">
-                <img src="{{ asset }}images/2024-11-14_18_40_34_Lincoln_.png" alt="Timbre 03">
-            </a>
-            <h3><a href="pages/produit.html">Timbre usa rare. Lincoln. 1902 1903. N°148. 5c.bleu b.</a></h3>
-            <span><strong>Prix de départ: </strong><span class="carte-prix">999.99$</span></span>
-            <span>Fin: <span>2024-12-24</span></span>
-            <a class="bouton" href="pages/produit.html">Voir l'enchère</a>
-        </article>
-
-
-        <article class="carte">
-            <a href="pages/produit.html">
-                <img src="{{ asset }}images/20fbc8f5-c62d-458c-bc57-b438dd66e00f.jpeg" alt="Timbre 04"> </a>
-            <h3><a href="pages/produit.html">Timbres Esso Power Players 1970-71 </a></h3>
-            <span><strong>Prix de départ: </strong><span class="carte-prix">100.00$</span></span>
-            <span>Fin: <span>2024-12-24</span></span>
-            <a class="bouton" href="pages/produit.html">Voir l'enchère</a>
-        </article>
-    </section> -->
+    </section>
 
 
         <section class="infolettre flex-center background-cover column">
-            <div class="infolettre-contenu container">
+            <div class="infolettre-contenu">
                 <div class="infolettre-texte">
                     <h3>Suivez nos dernières enchères</h3>
                     <p>Inscrivez-vous à l'infolettre de Stampee</p>
@@ -130,7 +101,13 @@
 
 
             {% for timbre in timbres %}
-            {% if timbre.encheres_id_enchere == enchere.id  %}
+
+            {% set dateFin = enchere.date_fin|date("YmdHis") %}
+            {% set maintenant = 'now'|date("YmdHis") %}
+            {% set difference = dateFin - maintenant %}
+
+
+            {% if timbre.encheres_id_enchere == enchere.id and difference > 0 %}
             <article class="carte">
                 <a href="{{ base }}/client/produit?id={{enchere.id}}">
                     {% for image in images %}
@@ -153,43 +130,7 @@
             {% endfor %}
             {% endif %}
             {% endfor %}
-            <!-- <article class="carte">
-                <a href="pages/produit.html">
-                    <img src="{{ asset }}images/timbre-01.jpg" alt="Timbre 01">
-                </a>
-                <h3><a href="pages/produit.html">France #2TCi - HRH Prince Albert (1857) 6d</a></h3>
-                <span><strong>Prix de départ: </strong><span class="carte-prix">999.99$</span></span>
-                <span>Fin: <span>2024-12-24</span></span>
-                <a class="bouton" href="pages/produit.html">Voir l'enchère</a>
-            </article>
 
-            <article class="carte">
-                <a href="pages/produit.html">
-                    <img src="{{ asset }}images/great-britain-stamp-64-queen-victoria-1873.jpg" alt="Timbre 02"> </a>
-                <h3><a href="pages/produit.html">Timbre de Grande-Bretagne #64 - Reine Victoria (1873)</a></h3>
-                <span><strong>Prix de départ: </strong><span class="carte-prix">49.50$</span></span>
-                <span>Fin: <span>2024-12-24</span></span>
-                <a class="bouton" href="pages/produit.html">Voir l'enchère</a>
-            </article>
-
-            <article class="carte">
-                <a href="pages/produit.html">
-                    <img src="{{ asset }}images/2024-11-14_18_40_34_Lincoln_.png" alt="Timbre 03">
-                </a>
-                <h3><a href="pages/produit.html">Timbre usa rare. Lincoln. 1902 1903. N°148. 5c.bleu b.</a></h3>
-                <span><strong>Prix de départ: </strong><span class="carte-prix">999.99$</span></span>
-                <span>Fin: <span>2024-12-24</span></span>
-                <a class="bouton" href="pages/produit.html">Voir l'enchère</a>
-            </article>
-
-            <article class="carte">
-                <a href="pages/produit.html">
-                    <img src="{{ asset }}images/20fbc8f5-c62d-458c-bc57-b438dd66e00f.jpeg" alt="Timbre 04"> </a>
-                <h3><a href="pages/produit.html">Timbres Esso Power Players 1970-71 </a></h3>
-                <span><strong>Prix de départ: </strong><span class="carte-prix">100.00$</span></span>
-                <span>Fin: <span>2024-12-24</span></span>
-                <a class="bouton" href="pages/produit.html">Voir l'enchère</a>
-            </article> -->
         </section>
 </main>
 
@@ -202,7 +143,7 @@
                 Cambridge. Son intérêt pour les timbres a débuté à l’âge de 10 ans, lorsqu’un
                 vieil oncle lui a offert un petit album contenant une collection de timbres britanniques datant de la fin du XIXe
                 siècle. Ce cadeau anodin allait devenir...</p>
-            <a class="bouton" href="pages/catalogue.html">En savoir plus</a>
+            <a class="bouton" href="#">En savoir plus</a>
         </div>
         <div class="image moitie">
             <img src="{{ asset }}images/lord-stampee-III_pixabay.jpg" alt="Lord Stampee">

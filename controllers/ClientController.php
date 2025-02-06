@@ -71,7 +71,23 @@ class ClientController
             echo "error";
         }
     }
+    public function cataloguePasse()
+    {
+        $enchere = new Encheres;
+        $encheres = $enchere->select('date_debut');
 
+        $timbre = new Timbres;
+        $timbres = $timbre->select('nom');
+
+        $image = new Images;
+        $images = $image->select('image_url');
+
+        if ($encheres) {
+            return View::render('client/catalogue-passe', ['encheres' => $encheres, 'timbres' => $timbres, 'images' => $images]);
+        } else {
+            echo "error";
+        }
+    }
 
     public function index()
     {

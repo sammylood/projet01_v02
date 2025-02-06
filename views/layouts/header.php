@@ -24,7 +24,7 @@
                 <div class="dropdown">
                     <bouton class="dropbtn">Enchères ▾</bouton>
                     <div class="dropdown-content">
-                        <a href="{{ base }}/client/catalogue" role="menuitem">Enchères passées </a>
+                        <a href="{{ base }}/client/catalogue-passe" role="menuitem">Enchères passées </a>
                         <a href="{{ base }}/client/catalogue" role="menuitem">Enchères en cours</a>
                     </div>
                 </div>

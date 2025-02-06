@@ -46,13 +46,13 @@
             </div> -->
         </div>
         <div class="produit-achat">
-            <h1><a href="">{{ encheres.id }}
-                    {% for timbre in timbres %}
-                    {% if timbre.encheres_id_enchere == encheres.id %}
-                    {{ timbre.nom }}
-                    {% endif %}
-                    {% endfor %}
-                </a></h1>
+            <h1>
+                {% for timbre in timbres %}
+                {% if timbre.encheres_id_enchere == encheres.id %}
+                {{ timbre.nom }}
+                {% endif %}
+                {% endfor %}
+            </h1>
             <div class="produit-specs">
                 <p>
                     <strong>Année : </strong>
@@ -210,7 +210,12 @@
 
 
         {% for timbre in timbres %}
-        {% if timbre.encheres_id_enchere == enchereList.id and enchereList.id != encheres.id %}
+        {% set dateFin = enchereList.date_fin|date("YmdHis") %}
+        {% set maintenant = 'now'|date("YmdHis") %}
+        {% set difference = dateFin - maintenant %}
+
+    
+        {% if timbre.encheres_id_enchere == enchereList.id and enchereList.id != encheres.id and difference > 0 %}
         <article class="carte">
             <a href="{{ base }}/client/produit?id={{enchere.id}}">
                 {% for image in images %}
