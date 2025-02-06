@@ -98,6 +98,21 @@
                     {% endif %}
                     {% endfor %}
                 </p>
+
+                <p>
+                    <strong>Pays : </strong>
+                    {% for timbre in timbres %}
+                    {% if timbre.encheres_id_enchere == encheres.id %}
+                    {% for country in countries %}
+                    {% if country.id_country == timbre.pays_id_pays %}
+                    {{ country.country_name }}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </p>
+
+
             </div>
             <div class="produit-specs">
                 <p>
@@ -214,7 +229,7 @@
         {% set maintenant = 'now'|date("YmdHis") %}
         {% set difference = dateFin - maintenant %}
 
-    
+
         {% if timbre.encheres_id_enchere == enchereList.id and enchereList.id != encheres.id and difference > 0 %}
         <article class="carte">
             <a href="{{ base }}/client/produit?id={{enchere.id}}">

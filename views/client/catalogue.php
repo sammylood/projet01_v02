@@ -7,16 +7,26 @@
 
 <div class="catalogue-container container">
     <aside class="menu-filtres">
+        
+        <form id="aside-form" action="#" method="GET">
+<!-- <div id="myBtnContainer">
+            <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+            <button class="btn" onclick="filterSelection('France')"> France</button>
+            <button class="btn" onclick="filterSelection('Canada')"> Canada</button>
+            <button class="btn" onclick="filterSelection('fruits')"> US</button>
+        </div> -->
 
-        <form id="aside-form" action="#">
+            
+
             <div class="as-filtres-titres"><span>filtres</span> <i class="fa fa-chevron-down"></i></div>
+            <button type="submit" class="bouton" style="margin-left:20px"> Valider les filtres </button>
             <fieldset class="as-filtres">
                 <legend>Provenance</legend>
                 <label for="amerique">
-                    <input type="checkbox" name="amerique" id="amerique"> <span>Amérique</span>
+                    <input type="checkbox" name="country_name" id="amerique" value="Canada"> <span>Canada</span>
                 </label>
                 <label for="europe">
-                    <input type="checkbox" name="europe" id="europe"> <span>Europe</span>
+                    <input type="checkbox" name="country_name" id="europe" value="France"> <span>France</span>
                 </label>
                 <label for="afrique">
                     <input type="checkbox" name="afrique" id="afrique"> <span>Afrique</span>
@@ -82,9 +92,7 @@
         </form>
     </aside>
     <main>
-        <!-- <header>
-            <h2>Nos timbres vedettes</h2>
-        </header> -->
+
         <section class="catalogue">
             <div class="catalogue-title">
                 <h2>Toutes les enchères en cours</h2>
@@ -112,7 +120,7 @@
 
 
 
-            <article class="carte">
+            <article class="Canada carte">
                 <a href="{{ base }}/client/produit?id={{enchere.id}}">
                     {% for image in images %}
                     {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
@@ -134,81 +142,7 @@
             {% endfor %}
             {% endif %}
             {% endfor %}
-            <!-- 
-
-            <article class="carte">
-                <a href="#" class="image">
-                    <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="Outlander PHEV">
-                </a>
-                <h3><a href="">2025 Outlander PHEV</a></h3>
-                <span><span class="carte-prix">À partir de 48,698$</span></span>
-                <a class="bouton" href="create">Voir l'enchère</a>
-            </article>
-
-            <article class="carte">
-                <a href="#" class="image">
-                    <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="Eclipse Cross">
-                </a>
-                <h3><a href="">2025 Eclipse Cross</a></h3>
-                <span><span class="carte-prix">À partir de 34,798$</span></span>
-                <a class="bouton" href="create">Voir l'enchère</a>
-            </article>
-
-            <article class="carte">
-                <a href="#" class="image">
-                    <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="
-                        RVR">
-                </a>
-                <h3><a href="">2025 RVR</a></h3>
-                <span><span class="carte-prix">À partir de 24,798$</span></span>
-                <a class="bouton" href="create">Voir l'enchère</a>
-            </article>
-
-            <article class="carte">
-                <a href="#" class="image">
-                    <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="Mirage">
-                </a>
-                <h3><a href="">2025 Mirage</a></h3>
-                <span><span class="carte-prix">À partir de 16,998$</span></span>
-                <a class="bouton" href="create">Voir l'enchère</a>
-            </article>
-
-            <article class="carte">
-                <a href="#" class="image">
-                    <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="Outlander PHEV">
-                </a>
-                <h3><a href="">2024 Outlander PHEV</a></h3>
-                <span><span class="carte-prix">À partir de 48,698$</span></span>
-                <a class="bouton" href="create">Voir l'enchère</a>
-            </article>
-
-            <article class="carte">
-                <a href="#" class="image">
-                    <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="Eclipse Cross">
-                </a>
-                <h3><a href="">2024 Eclipse Cross</a></h3>
-                <span><span class="carte-prix">À partir de 34,798$</span></span>
-                <a class="bouton" href="create">Voir l'enchère</a>
-            </article>
-
-            <article class="carte">
-                <a href="#" class="image">
-                    <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="
-                        RVR">
-                </a>
-                <h3><a href="">2024 RVR</a></h3>
-                <span><span class="carte-prix">À partir de 24,798$</span></span>
-                <a class="bouton" href="create">Voir l'enchère</a>
-            </article>
-
-            <article class="carte">
-                <a href="#" class="image">
-                    <img src="http://localhost/projet01_v02/public/images/timbre-01.jpg" alt="Mirage">
-                </a>
-                <h3><a href="">2024 Mirage</a></h3>
-                <span><span class="carte-prix">À partir de 16,998$</span></span>
-                <a class="bouton" href="create">Voir l'enchère</a>
-            </article> -->
+        
         </section>
 
     </main>
