@@ -31,7 +31,8 @@
 }
 .produit .produit-photo div:first-of-type img {
   width: auto;
- 
+  max-height: 500px;
+  object-fit: cover;
 }
 
 .produit .produit-photo > * + * {
