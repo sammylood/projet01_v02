@@ -24,15 +24,28 @@ function myFunction() {
 };
 
 
-const img = document.querySelector('.preview-image');
+window.onload = () => {
+  // (A) GET LIGHTBOX & ALL .ZOOMD IMAGES
+  let all = document.getElementsByClassName("zoomD"),
+      lightbox = document.getElementById("lightbox");
+ 
+  // (B) CLICK TO SHOW IMAGE IN LIGHTBOX
+  // * SIMPLY CLONE INTO LIGHTBOX & SHOW
+  if (all.length>0) { for (let i of all) {
+    i.onclick = () => {
+      let clone = i.cloneNode();
+      clone.className = "";
+      lightbox.innerHTML = "";
+      lightbox.appendChild(clone);
+      lightbox.className = "show";
+    };
+  }}
+ 
+  // (C) CLICK TO CLOSE LIGHTBOX
+  lightbox.onclick = () => lightbox.className = "hidden";
+};
 
-function zoom(event) {
-  const img = event.target;
-  img.style.transformOrigin = event.offsetX + 'px ' + event.offsetY + 'px';  
-  img.classList.toggle('zoom');  
-}
 
-img.addEventListener('click', zoom);
 
 /*
 console.log(generateBreadcrumbs('/nike/shoes/sports/red'))

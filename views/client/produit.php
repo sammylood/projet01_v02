@@ -5,20 +5,21 @@
         <span><a href="">encheres</a> > <a href=""> timbre</a></span>
     </section>
 </header>
-
+<div id="lightbox"></div>
 <main class="produit container">
     <!-- <header>
             <h2>Nos timbres vedettes</h2>
         </header> -->
     <section class="produit-header">
         <div class="produit-photo">
+
             <div class="">
-                <img src='{% for timbre in timbres %}
+                <img class="zoomD" src='{% for timbre in timbres %}
                     {% if timbre.encheres_id_enchere == encheres.id %}
                     {% for image in images %}
                     {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
                     {{ db_image }}{{ image.image_url }}
-                    ' 
+                    '
                     {% endif %}
                     {% endfor %}
                     {% endif %}
@@ -156,13 +157,13 @@
                 {% set maxValue = 0 %}
 
                 {% for mise in mises %}
-                    {% if mise.encheres_id == encheres.id and mise.users_id == session.user_id %}
-                        {% set maxValue = max(mise.montant_mise, maxValue) %}
-                    {% endif %}
+                {% if mise.encheres_id == encheres.id and mise.users_id == session.user_id %}
+                {% set maxValue = max(mise.montant_mise, maxValue) %}
+                {% endif %}
                 {% endfor %}
 
                 {% if maxValue < encheres.prix_debut  %}
-                    {% set maxValue = encheres.prix_debut %}
+                {% set maxValue = encheres.prix_debut %}
                 {% endif %}
 
                 {% set mise_minimum = maxValue + 5 %}
