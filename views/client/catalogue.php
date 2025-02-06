@@ -93,35 +93,35 @@
                     <div class="button-grid active"><i class="fa fa-th"></i></div>
                 </div>
             </div>
-            <!-- {% set displayNouveau = 0 %} -->
+            {% set displayNouveau = 0 %} 
             {% for enchere in encheres %}
 
-            <!-- {% if displayNouveau < 8 %} -->
+                {% if displayNouveau < 12 %} 
 
 
-            {% for timbre in timbres %}
-            {% if timbre.encheres_id_enchere == enchere.id  %}
-            <article class="carte">
-                <a href="{{ base }}/client/produit?id={{enchere.id}}">
-                    {% for image in images %}
-                    {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
-                    <img src="{{ db_image }}{{ image.image_url }}" alt="{{ image.alt_text }}">
-                    {% endif %}
+                    {% for timbre in timbres %}
+                        {% if timbre.encheres_id_enchere == enchere.id  %}
+                        <article class="carte">
+                            <a href="{{ base }}/client/produit?id={{enchere.id}}">
+                                {% for image in images %}
+                                {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
+                                <img src="{{ db_image }}{{ image.image_url }}" alt="{{ image.alt_text }}">
+                                {% endif %}
+                                {% endfor %}
+                            </a>
+                            <h3><a href="{{ base }}/client/produit?id={{enchere.id}}">
+            
+                                    {{ timbre.nom }}
+
+                                </a></h3>
+                            <span><strong>Prix de départ: </strong><span class="carte-prix">{{ enchere.prix_debut }}</span></span>
+                            <span>Fin: <span>{{ enchere.date_fin }}</span></span>
+                            <a class="bouton" href="{{ base }}/client/produit?id={{enchere.id}}">Voir l'enchère</a>
+                        </article>
+                        {% set displayNouveau = displayNouveau + 1 %} 
+                        {% endif %}
                     {% endfor %}
-                </a>
-                <h3><a href="{{ base }}/client/produit?id={{enchere.id}}">
-   
-                        {{ timbre.nom }}
-
-                    </a></h3>
-                <span><strong>Prix de départ: </strong><span class="carte-prix">{{ enchere.prix_debut }}</span></span>
-                <span>Fin: <span>{{ enchere.date_fin }}</span></span>
-                <a class="bouton" href="{{ base }}/client/produit?id={{enchere.id}}">Voir l'enchère</a>
-            </article>
-            <!-- {% set displayNouveau = displayNouveau + 1 %} -->
-            {% endif %}
-            {% endfor %}
-            {% endif %}
+                {% endif %}
             {% endfor %}
             <!-- 
 

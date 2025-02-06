@@ -152,10 +152,23 @@
                     {% endfor %}
                 </select> -->
                 <h2>Nouvelle mise</h2>
-                {% set mise_minimum = (mises|last.montant_mise) + 5 %}
+
+                {% set maxValue = 0 %}
+
+                {% for mise in mises %}
+                {% if mise.encheres_id == encheres.id %}
+
+                {% set maxValue = max(mise.montant_mise, maxValue) %}
+
+                {% endif %}
+                {% endfor %}
+
+               
+
+                {% set mise_minimum = maxValue + 5 %}
                 <p class="derniereMise">La dernière mise était de :
-                    
-                    {{ mises|last.montant_mise }}
+
+                    {{ maxValue }}
                 </p>
                 <!-- dernier:{{mises|last.users_id}} vous:{{session.user_id}} -->
                 {% if mise.user_id == session.user_id and mises|last.users_id == session.user_id  %}

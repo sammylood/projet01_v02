@@ -384,22 +384,28 @@ class ClientController
 
         $validator = new Validator;
         // $validator->field('nom', $data['nom'])->min(2)->max(10);
-        
+
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             var_dump($_FILES);
 
             
             $image_url = ($_FILES["fileToUpload"]["name"]);
             echo "nom d'image " . $image_url;
-            $imageTable = ['', $image_url, '1', '15'];
+            $imageTable = array(
+                "id_image" => "", 
+                "image_url" => $image_url,
+                "principale" => "1", 
+                "timbres_id_timbre" => "15",
+
+            );
 // die();
             $image = new Images;
             $insert = $image->insert($imageTable);
             
             
-            echo "<br> ";
-            var_dump($imageTable);
-            die();
+            // echo "<br> ";
+            // var_dump($imageTable);
+            // die();
             if ($insert) {
                 return View::redirect('client/compte');
                 
