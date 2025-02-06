@@ -18,11 +18,11 @@
                     {% for image in images %}
                     {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
                     {{ db_image }}{{ image.image_url }}
-                    ' alt="{{ image.alt_text }}
+                    ' 
                     {% endif %}
                     {% endfor %}
                     {% endif %}
-                    {% endfor %}">
+                    {% endfor %}>
             </div>
 
             {% for timbre in timbres %}

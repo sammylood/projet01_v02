@@ -105,7 +105,7 @@
                             <a href="{{ base }}/client/produit?id={{enchere.id}}">
                                 {% for image in images %}
                                 {% if ((image.timbres_id_timbre == timbre.id_timbre) and (image.principale == 1)) %}
-                                <img src="{{ db_image }}{{ image.image_url }}" alt="{{ image.alt_text }}">
+                                <img src="{{ db_image }}{{ image.image_url }}">
                                 {% endif %}
                                 {% endfor %}
                             </a>
