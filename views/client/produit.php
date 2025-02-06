@@ -156,14 +156,14 @@
                 {% set maxValue = 0 %}
 
                 {% for mise in mises %}
-                {% if mise.encheres_id == encheres.id %}
-
-                {% set maxValue = max(mise.montant_mise, maxValue) %}
-
-                {% endif %}
+                    {% if mise.encheres_id == encheres.id and mise.users_id == session.user_id %}
+                        {% set maxValue = max(mise.montant_mise, maxValue) %}
+                    {% endif %}
                 {% endfor %}
 
-               
+                {% if maxValue < encheres.prix_debut  %}
+                    {% set maxValue = encheres.prix_debut %}
+                {% endif %}
 
                 {% set mise_minimum = maxValue + 5 %}
                 <p class="derniereMise">La dernière mise était de :

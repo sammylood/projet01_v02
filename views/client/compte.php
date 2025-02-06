@@ -1,5 +1,5 @@
 {{ include('layouts/header.php', {title:'Mon compte'})}}
-<header class="entete">
+<header class="entete" id="timbres">
     <section class="fil-ariane container">
         <span>Bonjour {{ session.user_name }}</span>
     </section>
@@ -14,7 +14,7 @@
     </aside>
     <main>
 
-        <h2 id="timbres">Mes Timbres</h2>
+        <h2>Mes Timbres</h2>
         <table class="compte">
             <thead>
                 <tr>
@@ -62,18 +62,23 @@
             <thead>
                 <tr>
                     <th>N° de Mise</th>
-                    <th>N° de l'enchère</th>
+                    <th>Nom de l'enchère</th>
                     <th>Montant de la mise</th>
 
 
                 </tr>
             </thead>
             <tbody>
-                {% for mise in mises %}
+                {% for mise in mises|sort((a, b) => a.id_mise <=> b.id_mise) %}
                 {% if mise.users_id == session.user_id %}
                 <tr>
                     <td><strong>{{ mise.id_mise }}</strong></td>
-                    <td>{{ mise.encheres_id }}
+                    <td><a href="{{ base }}/client/produit?id={{ mise.encheres_id }}">
+                        {% for timbre in timbres %}
+                        {% if mise.encheres_id == timbre.encheres_id_enchere %}
+                        {{ timbre.nom }}
+                        {% endif %}
+                        {% endfor %}</a>
                     </td>
                     <td>{{ mise.montant_mise }}
                     </td>
